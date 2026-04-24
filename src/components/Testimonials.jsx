@@ -123,8 +123,8 @@ const Testimonials = () => {
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="carousel-slide px-4">
-              <div className="bg-surface-container-low p-8 md:p-12 rounded-xl border border-outline-variant/10">
+            <div key={index} className="carousel-slide flex justify-center items-center">
+              <div className="bg-surface-container-low p-8 md:p-12 rounded-xl border border-outline-variant/10 w-full max-w-4xl mx-4">
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div
                     className="avatar-initials"
