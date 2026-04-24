@@ -1,5 +1,9 @@
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 .glass-header {
@@ -19,10 +23,17 @@
   top: 100%;
   width: 3px;
   height: 0;
-  background: linear-gradient(180deg, #3299ff 0%, rgba(50, 153, 255, 0.3) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    #3299ff 0%,
+    rgba(50, 153, 255, 0.3) 50%,
+    transparent 100%
+  );
   opacity: 0;
   animation: beamFall 2.5s ease-out forwards;
-  box-shadow: 0 0 10px rgba(50, 153, 255, 0.6), 0 0 20px rgba(50, 153, 255, 0.3);
+  box-shadow:
+    0 0 10px rgba(50, 153, 255, 0.6),
+    0 0 20px rgba(50, 153, 255, 0.3);
 }
 
 .sparkle {
@@ -82,7 +93,9 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   transform: scale(1);
 }
 
@@ -115,7 +128,9 @@
 .fade-in-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .fade-in-up.visible {
@@ -123,9 +138,15 @@
   transform: translateY(0);
 }
 
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+.stagger-3 {
+  transition-delay: 0.3s;
+}
 
 /* Color Picker Demo */
 .color-swatch {
@@ -149,7 +170,9 @@
 }
 
 .house-light {
-  transition: fill 0.4s ease, filter 0.4s ease;
+  transition:
+    fill 0.4s ease,
+    filter 0.4s ease;
   filter: drop-shadow(0 0 8px currentColor);
 }
 
@@ -167,6 +190,16 @@
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .carousel-slide {
+    padding: 0 2rem;
+  }
 }
 
 .carousel-arrow {
@@ -192,8 +225,12 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-arrow.left { left: 1rem; }
-.carousel-arrow.right { right: 1rem; }
+.carousel-arrow.left {
+  left: 1rem;
+}
+.carousel-arrow.right {
+  right: 1rem;
+}
 
 .carousel-dots {
   display: flex;

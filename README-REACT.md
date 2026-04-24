@@ -52,11 +52,13 @@ truelight-innovations/
 ### Installation
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development server:**
+
    ```bash
    npm run dev
    ```
@@ -81,23 +83,27 @@ npm run preview
 ## Component Overview
 
 ### Header.jsx
+
 - Animated navbar with multi-colored light beams on page load
 - Uses `useEffect` hook to create DOM elements for beams
 - Responsive design with fewer beams on mobile
 
 ### ColorPicker.jsx
+
 - Interactive color swatches (12 preset colors)
 - SVG house illustration with LED lights
 - `useState` for selected color management
 - Real-time color updates on click
 
 ### BeforeAfter.jsx
+
 - Hover effect for desktop (CSS)
 - Tap/click toggle for mobile (React state)
 - Smooth opacity and scale transitions
 - Fallback images if custom photos not available
 
 ### Testimonials.jsx
+
 - Auto-rotating carousel (5-second interval)
 - `useState` for current slide tracking
 - `useEffect` for auto-rotation with cleanup
@@ -106,6 +112,7 @@ npm run preview
 - Navigation arrows and dot indicators
 
 ### Services.jsx, About.jsx, Contact.jsx
+
 - Intersection Observer for scroll-triggered animations
 - `useRef` for DOM references
 - `useEffect` for observer setup and cleanup
@@ -144,33 +151,37 @@ The app includes fallback images if custom photos are not available.
 ## Customization
 
 ### Testimonials
+
 Edit the `testimonials` array in `src/components/Testimonials.jsx`:
 
 ```javascript
 const testimonials = [
   {
-    initials: 'SE',
-    gradient: 'linear-gradient(135deg, #3299ff 0%, #00ddff 100%)',
+    initials: "SE",
+    gradient: "linear-gradient(135deg, #3299ff 0%, #00ddff 100%)",
     text: '"Your testimonial here"',
-    name: 'Customer Name',
-    location: 'City, TX'
+    name: "Customer Name",
+    location: "City, TX",
   },
   // Add more...
-]
+];
 ```
 
 ### Colors
+
 Modify the `colors` array in `src/components/ColorPicker.jsx`:
 
 ```javascript
 const colors = [
-  { hex: '#3299ff', name: 'Sky Blue' },
+  { hex: "#3299ff", name: "Sky Blue" },
   // Add more colors...
-]
+];
 ```
 
 ### Animation Timing
+
 Adjust timing in `src/index.css`:
+
 - Light beam duration: `.light-beam` animation (2.5s)
 - Carousel auto-rotate: `Testimonials.jsx` useEffect (5000ms)
 - Scroll fade-in: `.fade-in-up` transition (0.8s)
@@ -191,6 +202,7 @@ Adjust timing in `src/index.css`:
 ## Migration from Original HTML
 
 All functionality from the original HTML/CSS/JavaScript version has been preserved:
+
 - ✅ Light beam animation on page load
 - ✅ Color picker with live updates
 - ✅ Before/after hover effect

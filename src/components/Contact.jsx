@@ -1,47 +1,47 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    zip: ''
-  })
-  const sectionRef = useRef(null)
+    name: "",
+    email: "",
+    zip: "",
+  });
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    }
+      rootMargin: "0px 0px -50px 0px",
+    };
 
     const fadeInObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-          fadeInObserver.unobserve(entry.target)
+          entry.target.classList.add("visible");
+          fadeInObserver.unobserve(entry.target);
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
     if (sectionRef.current) {
-      fadeInObserver.observe(sectionRef.current)
+      fadeInObserver.observe(sectionRef.current);
     }
 
-    return () => fadeInObserver.disconnect()
-  }, [])
+    return () => fadeInObserver.disconnect();
+  }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
+    e.preventDefault();
+    console.log("Form submitted:", formData);
     // Add your form submission logic here
-  }
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <section id="contact" className="py-24 px-6 fade-in-up" ref={sectionRef}>
@@ -52,9 +52,13 @@ const Contact = () => {
             Ready to Shine?
           </h2>
           <p className="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto">
-            Transform your home today. Join the hundreds of South Texas homeowners who trust TrueLight for their permanent lighting needs.
+            Transform your home today. Join the hundreds of South Texas
+            homeowners who trust TrueLight for their permanent lighting needs.
           </p>
-          <form className="max-w-md mx-auto grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
+          <form
+            className="max-w-md mx-auto grid grid-cols-1 gap-6"
+            onSubmit={handleSubmit}
+          >
             <div className="text-left">
               <label className="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2 ml-1">
                 Full Name
@@ -107,7 +111,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

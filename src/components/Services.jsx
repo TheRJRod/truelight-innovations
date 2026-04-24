@@ -1,37 +1,42 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react";
 
 const Services = () => {
-  const sectionRef = useRef(null)
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    }
+      rootMargin: "0px 0px -50px 0px",
+    };
 
     const fadeInObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-          fadeInObserver.unobserve(entry.target)
+          entry.target.classList.add("visible");
+          fadeInObserver.unobserve(entry.target);
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
-    const fadeInElements = sectionRef.current?.querySelectorAll('.fade-in-up')
-    fadeInElements?.forEach(el => fadeInObserver.observe(el))
+    const fadeInElements = sectionRef.current?.querySelectorAll(".fade-in-up");
+    fadeInElements?.forEach((el) => fadeInObserver.observe(el));
 
-    return () => fadeInObserver.disconnect()
-  }, [])
+    return () => fadeInObserver.disconnect();
+  }, []);
 
   return (
-    <section id="services" className="py-24 px-6 max-w-7xl mx-auto" ref={sectionRef}>
+    <section
+      id="services"
+      className="py-24 px-6 max-w-7xl mx-auto"
+      ref={sectionRef}
+    >
       <div className="mb-16 fade-in-up">
         <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
           Illuminating Innovation
         </h2>
         <p className="text-on-surface-variant max-w-lg">
-          Our systems combine cutting-edge LED technology with professional-grade durability.
+          Our systems combine cutting-edge LED technology with
+          professional-grade durability.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -45,7 +50,8 @@ const Services = () => {
           </div>
           <h3 className="font-display text-xl font-bold mb-3">Permanent LED</h3>
           <p className="text-on-surface-variant leading-relaxed">
-            Installed once, enjoyed forever. Discreet tracks that blend seamlessly into your roofline during the day.
+            Installed once, enjoyed forever. Discreet tracks that blend
+            seamlessly into your roofline during the day.
           </p>
         </div>
 
@@ -59,7 +65,8 @@ const Services = () => {
             Customizable Lighting
           </h3>
           <p className="text-on-surface-variant leading-relaxed">
-            16 million colors at your fingertips. Preset patterns for holidays, game days, and every special moment.
+            16 million colors at your fingertips. Preset patterns for holidays,
+            game days, and every special moment.
           </p>
         </div>
 
@@ -75,12 +82,13 @@ const Services = () => {
             Energy Efficient
           </h3>
           <p className="text-on-surface-variant leading-relaxed">
-            Ultra-low consumption LED bulbs designed to last 50,000+ hours with minimal environmental impact.
+            Ultra-low consumption LED bulbs designed to last 50,000+ hours with
+            minimal environmental impact.
           </p>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;
