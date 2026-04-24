@@ -48,9 +48,9 @@ const Hero = () => {
           </a>
         </div>
       </div>
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+      {/* <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
         <div className="feature-beam"></div>
-      </div>
+      </div> */}
     </section>
   );
 };
