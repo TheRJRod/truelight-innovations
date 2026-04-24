@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Hero = () => {
   return (
@@ -22,7 +22,7 @@ const Hero = () => {
           THE PREMIUM <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-fixed-dim">
             OUTDOOR LIGHTING
-          </span>{' '}
+          </span>{" "}
           <br />
           SOLUTION
         </h1>
@@ -40,16 +40,19 @@ const Hero = () => {
               arrow_forward
             </span>
           </a>
-          <button className="bg-transparent border border-outline-variant/30 text-white px-8 py-4 rounded-full font-bold text-lg backdrop-blur-md hover:bg-white/5 transition-colors">
+          <a
+            href="#gallery"
+            className="bg-transparent border border-outline-variant/30 text-white px-8 py-4 rounded-full font-bold text-lg backdrop-blur-md hover:bg-white/5 transition-colors"
+          >
             View Gallery
-          </button>
+          </a>
         </div>
       </div>
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
         <div className="feature-beam"></div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

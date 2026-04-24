@@ -1,64 +1,69 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from "react";
 
 const BeforeAfter = () => {
-  const [isTouched, setIsTouched] = useState(false)
-  const [showAfterLabel, setShowAfterLabel] = useState(false)
-  const sectionRef = useRef(null)
+  const [isTouched, setIsTouched] = useState(false);
+  const [showAfterLabel, setShowAfterLabel] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    }
+      rootMargin: "0px 0px -50px 0px",
+    };
 
     const fadeInObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-          fadeInObserver.unobserve(entry.target)
+          entry.target.classList.add("visible");
+          fadeInObserver.unobserve(entry.target);
         }
-      })
-    }, observerOptions)
+      });
+    }, observerOptions);
 
     if (sectionRef.current) {
-      fadeInObserver.observe(sectionRef.current)
+      fadeInObserver.observe(sectionRef.current);
     }
 
-    return () => fadeInObserver.disconnect()
-  }, [])
+    return () => fadeInObserver.disconnect();
+  }, []);
 
   const handleClick = () => {
     if (window.innerWidth <= 768) {
-      setIsTouched(!isTouched)
-      setShowAfterLabel(!isTouched)
+      setIsTouched(!isTouched);
+      setShowAfterLabel(!isTouched);
     }
-  }
+  };
 
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
-      setShowAfterLabel(true)
+      setShowAfterLabel(true);
     }
-  }
+  };
 
   const handleMouseLeave = () => {
     if (window.innerWidth > 768) {
-      setShowAfterLabel(false)
+      setShowAfterLabel(false);
     }
-  }
+  };
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto fade-in-up" ref={sectionRef}>
+    <section
+      id="gallery"
+      className="py-24 px-6 max-w-7xl mx-auto fade-in-up"
+      ref={sectionRef}
+    >
       <div className="text-center mb-16">
         <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
           See The Transformation
         </h2>
         <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">
-          Experience the dramatic difference permanent LED lighting makes. Hover to reveal the magic.
+          Experience the dramatic difference permanent LED lighting makes. Hover
+          to reveal the magic.
         </p>
       </div>
       <div className="max-w-4xl mx-auto">
         <div
-          className={`before-after-container aspect-video relative rounded-xl shadow-2xl ${isTouched ? 'touched' : ''}`}
+          className={`before-after-container aspect-video relative rounded-xl shadow-2xl ${isTouched ? "touched" : ""}`}
           onClick={handleClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -69,7 +74,8 @@ const BeforeAfter = () => {
             alt="House before lighting installation"
             className="w-full h-full object-cover rounded-xl"
             onError={(e) => {
-              e.target.src = 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=675&fit=crop'
+              e.target.src =
+                "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=675&fit=crop";
             }}
           />
           {/* After Image */}
@@ -78,16 +84,17 @@ const BeforeAfter = () => {
             alt="House with TrueLight LED installation"
             className="after-image w-full h-full object-cover rounded-xl"
             onError={(e) => {
-              e.target.src = 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=675&fit=crop'
+              e.target.src =
+                "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=675&fit=crop";
             }}
           />
           {/* Labels */}
           <div className="image-label top-4 left-4">Before</div>
           <div
             className="image-label top-4 right-4"
-            style={{ 
+            style={{
               opacity: showAfterLabel ? 1 : 0,
-              transition: 'opacity 0.4s ease'
+              transition: "opacity 0.4s ease",
             }}
           >
             After
@@ -98,8 +105,12 @@ const BeforeAfter = () => {
               <span className="material-symbols-outlined text-6xl text-white mb-2 animate-pulse">
                 touch_app
               </span>
-              <p className="text-white text-xl font-bold">Hover to See the Magic</p>
-              <p className="text-white/80 text-sm mt-2 md:hidden">Tap to reveal</p>
+              <p className="text-white text-xl font-bold">
+                Hover to See the Magic
+              </p>
+              <p className="text-white/80 text-sm mt-2 md:hidden">
+                Tap to reveal
+              </p>
             </div>
           </div>
         </div>
@@ -108,7 +119,7 @@ const BeforeAfter = () => {
         </p>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default BeforeAfter
+export default BeforeAfter;
