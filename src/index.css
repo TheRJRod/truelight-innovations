@@ -1,0 +1,272 @@
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.glass-header {
+  background: rgba(16, 20, 26, 0.8);
+  backdrop-filter: blur(20px);
+}
+
+.feature-beam {
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(180deg, #3299ff 0%, transparent 100%);
+}
+
+/* Navbar Light Beam Animations */
+.light-beam {
+  position: absolute;
+  top: 100%;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, #3299ff 0%, rgba(50, 153, 255, 0.3) 50%, transparent 100%);
+  opacity: 0;
+  animation: beamFall 2.5s ease-out forwards;
+  box-shadow: 0 0 10px rgba(50, 153, 255, 0.6), 0 0 20px rgba(50, 153, 255, 0.3);
+}
+
+.sparkle {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3299ff;
+  opacity: 0;
+  animation: sparkle 1s ease-out forwards;
+  box-shadow: 0 0 15px rgba(50, 153, 255, 0.8);
+}
+
+@keyframes beamFall {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+}
+
+/* Before/After Hover Effect */
+.before-after-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.before-after-container .after-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: scale(1);
+}
+
+.before-after-container:hover .after-image {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.before-after-container .overlay-text {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.before-after-container:hover .overlay-text {
+  opacity: 0;
+}
+
+.image-label {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  background: rgba(16, 20, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  z-index: 10;
+}
+
+/* Scroll Fade-In Animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+
+/* Color Picker Demo */
+.color-swatch {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px currentColor;
+}
+
+.color-swatch.active {
+  border-color: white;
+  box-shadow: 0 0 25px currentColor;
+  transform: scale(1.15);
+}
+
+.house-light {
+  transition: fill 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Testimonials Carousel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(50, 153, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(50, 153, 255, 0.3);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(50, 153, 255, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.left { left: 1rem; }
+.carousel-arrow.right { right: 1rem; }
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(192, 199, 213, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: #3299ff;
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* CSS Avatar for Testimonials */
+.avatar-initials {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 4px solid rgba(50, 153, 255, 0.2);
+  flex-shrink: 0;
+}
+
+/* Mobile & Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .light-beam,
+  .sparkle,
+  .fade-in-up,
+  .carousel-track {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .color-swatch {
+    width: 50px;
+    height: 50px;
+  }
+  .before-after-container .after-image {
+    opacity: 0;
+  }
+  .before-after-container.touched .after-image {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  .before-after-container.touched .overlay-text {
+    opacity: 0;
+  }
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}
