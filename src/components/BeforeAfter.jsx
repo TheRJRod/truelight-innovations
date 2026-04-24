@@ -70,7 +70,7 @@ const BeforeAfter = () => {
         >
           {/* Before Image */}
           <img
-            src="/before.jpg"
+            src="./before.jpg"
             alt="House before lighting installation"
             className="w-full h-full object-cover rounded-xl"
             onError={(e) => {
@@ -80,7 +80,7 @@ const BeforeAfter = () => {
           />
           {/* After Image */}
           <img
-            src="/after.jpg"
+            src="./after.jpg"
             alt="House with TrueLight LED installation"
             className="after-image w-full h-full object-cover rounded-xl"
             onError={(e) => {
