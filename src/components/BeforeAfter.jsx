@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const BeforeAfter = () => {
-  const [isTouched, setIsTouched] = useState(false);
-  const [showAfterLabel, setShowAfterLabel] = useState(false);
+  const [showAfter, setShowAfter] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -27,25 +26,6 @@ const BeforeAfter = () => {
     return () => fadeInObserver.disconnect();
   }, []);
 
-  const handleClick = () => {
-    if (window.innerWidth <= 768) {
-      setIsTouched(!isTouched);
-      setShowAfterLabel(!isTouched);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (window.innerWidth > 768) {
-      setShowAfterLabel(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (window.innerWidth > 768) {
-      setShowAfterLabel(false);
-    }
-  };
-
   return (
     <section
       id="gallery"
@@ -57,16 +37,54 @@ const BeforeAfter = () => {
           See The Transformation
         </h2>
         <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">
-          Experience the dramatic difference permanent LED lighting makes. Hover
-          to reveal the magic.
+          Experience the dramatic difference permanent LED lighting makes.
         </p>
       </div>
       <div className="max-w-4xl mx-auto">
+        {/* Mobile Toggle Buttons */}
+        <div className="md:hidden flex gap-2 mb-4">
+          <button
+            onClick={() => setShowAfter(false)}
+            className={`flex-1 py-3 px-6 rounded-lg font-bold transition-all ${
+              !showAfter
+                ? "bg-primary text-on-primary"
+                : "bg-surface-container-low text-on-surface-variant border border-outline-variant/30"
+            }`}
+          >
+            Before
+          </button>
+          <button
+            onClick={() => setShowAfter(true)}
+            className={`flex-1 py-3 px-6 rounded-lg font-bold transition-all ${
+              showAfter
+                ? "bg-primary text-on-primary"
+                : "bg-surface-container-low text-on-surface-variant border border-outline-variant/30"
+            }`}
+          >
+            After
+          </button>
+        </div>
+
+        {/* Mobile: Toggle Between Images */}
+        <div className="md:hidden aspect-video relative rounded-xl shadow-2xl overflow-hidden">
+          <img
+            src={showAfter ? "/after.jpg" : "/before.jpg"}
+            alt={showAfter ? "House with TrueLight LED installation" : "House before lighting installation"}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = showAfter
+                ? "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=675&fit=crop"
+                : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=675&fit=crop";
+            }}
+          />
+          <div className="image-label top-4 left-4">
+            {showAfter ? "After" : "Before"}
+          </div>
+        </div>
+
+        {/* Desktop: Hover Effect */}
         <div
-          className={`before-after-container aspect-video relative rounded-xl shadow-2xl ${isTouched ? "touched" : ""}`}
-          onClick={handleClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          className="hidden md:block before-after-container aspect-video relative rounded-xl shadow-2xl"
         >
           {/* Before Image */}
           <img
@@ -90,13 +108,7 @@ const BeforeAfter = () => {
           />
           {/* Labels */}
           <div className="image-label top-4 left-4">Before</div>
-          <div
-            className="image-label top-4 right-4"
-            style={{
-              opacity: showAfterLabel ? 1 : 0,
-              transition: "opacity 0.4s ease",
-            }}
-          >
+          <div className="image-label top-4 right-4 after-label">
             After
           </div>
           {/* Overlay Text */}
@@ -108,12 +120,10 @@ const BeforeAfter = () => {
               <p className="text-white text-xl font-bold">
                 Hover to See the Magic
               </p>
-              <p className="text-white/80 text-sm mt-2 md:hidden">
-                Tap to reveal
-              </p>
             </div>
           </div>
         </div>
+        
         <p className="text-center text-sm text-on-surface-variant mt-6">
           Real TrueLight installation • Professional results guaranteed
         </p>

@@ -124,6 +124,15 @@
   z-index: 10;
 }
 
+.image-label.after-label {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.before-after-container:hover .image-label.after-label {
+  opacity: 1;
+}
+
 /* Scroll Fade-In Animations */
 .fade-in-up {
   opacity: 0;
@@ -291,16 +300,6 @@
   .color-swatch {
     width: 50px;
     height: 50px;
-  }
-  .before-after-container .after-image {
-    opacity: 0;
-  }
-  .before-after-container.touched .after-image {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  .before-after-container.touched .overlay-text {
-    opacity: 0;
   }
 }
 
