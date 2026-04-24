@@ -115,86 +115,125 @@ const Testimonials = () => {
           Don't just take our word for it. See what our customers have to say.
         </p>
       </div>
-      <div
-        className="carousel-container max-w-4xl mx-auto relative"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
+
+      {/* Mobile: Stacked testimonials */}
+      <div className="md:hidden flex flex-col gap-6 max-w-lg mx-auto">
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+            <div className="flex flex-col gap-6 items-center text-center">
+              <div
+                className="avatar-initials flex-shrink-0"
+                style={{ background: testimonial.gradient, color: "white" }}
+              >
+                {testimonial.initials}
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-center gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span
+                      key={i}
+                      className="material-symbols-outlined text-yellow-400"
+                      style={{ fontVariationSettings: '"FILL" 1' }}
+                    >
+                      star
+                    </span>
+                  ))}
+                </div>
+                <p className="text-base text-on-surface-variant italic mb-4 leading-relaxed">
+                  {testimonial.text}
+                </p>
+                <h4 className="font-bold text-white text-lg">
+                  {testimonial.name}
+                </h4>
+                <p className="text-sm text-on-surface-variant">
+                  {testimonial.location}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: Carousel */}
+      <div className="hidden md:block">
         <div
-          className="carousel-track"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          className="carousel-container max-w-4xl mx-auto relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="carousel-slide">
-              <div className="bg-surface-container-low p-6 md:p-12 rounded-xl border border-outline-variant/10">
-                <div className="flex flex-col gap-6 items-center text-center md:flex-row md:gap-8 md:text-left">
-                  <div
-                    className="avatar-initials flex-shrink-0"
-                    style={{ background: testimonial.gradient, color: "white" }}
-                  >
-                    {testimonial.initials}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-center md:justify-start gap-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <span
-                          key={i}
-                          className="material-symbols-outlined text-yellow-400"
-                          style={{ fontVariationSettings: '"FILL" 1' }}
-                        >
-                          star
-                        </span>
-                      ))}
+          <div
+            className="carousel-track"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="carousel-slide">
+                <div className="bg-surface-container-low p-12 rounded-xl border border-outline-variant/10">
+                  <div className="flex flex-row gap-8 items-center text-left">
+                    <div
+                      className="avatar-initials flex-shrink-0"
+                      style={{ background: testimonial.gradient, color: "white" }}
+                    >
+                      {testimonial.initials}
                     </div>
-                    <p className="text-base md:text-lg text-on-surface-variant italic mb-4 md:mb-6 leading-relaxed">
-                      {testimonial.text}
-                    </p>
-                    <h4 className="font-bold text-white text-lg">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-on-surface-variant">
-                      {testimonial.location}
-                    </p>
+                    <div className="flex-1">
+                      <div className="flex justify-start gap-1 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <span
+                            key={i}
+                            className="material-symbols-outlined text-yellow-400"
+                            style={{ fontVariationSettings: '"FILL" 1' }}
+                          >
+                            star
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-lg text-on-surface-variant italic mb-6 leading-relaxed">
+                        {testimonial.text}
+                      </p>
+                      <h4 className="font-bold text-white text-lg">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-sm text-on-surface-variant">
+                        {testimonial.location}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            className="carousel-arrow left"
+            onClick={prevSlide}
+            aria-label="Previous testimonial"
+          >
+            <span className="material-symbols-outlined text-white">
+              chevron_left
+            </span>
+          </button>
+          <button
+            className="carousel-arrow right"
+            onClick={nextSlide}
+            aria-label="Next testimonial"
+          >
+            <span className="material-symbols-outlined text-white">
+              chevron_right
+            </span>
+          </button>
         </div>
 
-        {/* Navigation Arrows */}
-        <button
-          className="carousel-arrow left"
-          onClick={prevSlide}
-          aria-label="Previous testimonial"
-        >
-          <span className="material-symbols-outlined text-white">
-            chevron_left
-          </span>
-        </button>
-        <button
-          className="carousel-arrow right"
-          onClick={nextSlide}
-          aria-label="Next testimonial"
-        >
-          <span className="material-symbols-outlined text-white">
-            chevron_right
-          </span>
-        </button>
-      </div>
-
-      {/* Carousel Dots */}
-      <div className="carousel-dots">
-        {testimonials.map((_, index) => (
-          <div
-            key={index}
-            className={`carousel-dot ${currentSlide === index ? "active" : ""}`}
-            onClick={() => goToSlide(index)}
-          ></div>
-        ))}
+        {/* Carousel Dots */}
+        <div className="carousel-dots">
+          {testimonials.map((_, index) => (
+            <div
+              key={index}
+              className={`carousel-dot ${currentSlide === index ? "active" : ""}`}
+              onClick={() => goToSlide(index)}
+            ></div>
+          ))}
+        </div>
       </div>
     </section>
   );
